@@ -25,6 +25,7 @@ namespace API.Models
             LastName = lastName ?? string.Empty;
             FirstName = firstName ?? string.Empty;
             PhoneNumber = phoneNumber ?? string.Empty;
+            Companies = new List<Company>();
         }
     }
 }

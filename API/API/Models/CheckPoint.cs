@@ -17,10 +17,11 @@ namespace API.Models
 
         public Company? Company { get; private set; }
 
-        public CheckPoint(string name, ulong companyId)
+        public CheckPoint(string name)
         {
             Name = name;
-            CompanyId = companyId;
+            CompanyId = default;
+            Company = default;
         }
     }
 }

@@ -20,6 +20,8 @@ namespace API.Models
         {
             Id = default;
             FullName = fullName;
+            Users = new List<User>();
+            CheckPoints = new List<CheckPoint>();
         }
     }
 }
