@@ -2,6 +2,7 @@
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace API.Controllers
@@ -66,12 +67,12 @@ namespace API.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(User user)
         {
+            if (user == null) return Unauthorized(user);
+
             User? result = await _context.Users
                 .FirstOrDefaultAsync(u => u.PhoneNumber == user.PhoneNumber);
 
             if (result == null) return Unauthorized(result);
-
-            // TODO: Добавить компании и посты в result.
 
             List<Company> companies = await _context.Companies
                 .Where(c => c.Users.Contains(result))
@@ -86,7 +87,7 @@ namespace API.Controllers
                     .ToListAsync();
             }
 
-            return result != null ? Ok(result) : Unauthorized(result);
+            return Ok(result);
         }
     }
 }
