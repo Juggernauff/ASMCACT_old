@@ -22,7 +22,6 @@ namespace TelegramBot.Handlers.API
             {
                 JsonContent jsonContent = JsonContent.Create(checkPoint);
                 var response = await httpClient.PostAsync("https://localhost:7172/api/CheckPoint/GetCheckPoint", jsonContent);
-                Console.WriteLine(response.Content.ReadAsStringAsync().Result);
                 CheckPoint result = JsonConvert.DeserializeObject<Models.CheckPoint>(response.Content.ReadAsStringAsync().Result);
                 return result;
             }
