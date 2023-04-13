@@ -1,4 +1,4 @@
-﻿namespace API.Models
+﻿namespace TelegramBot.Models
 {
     public class Company
     {
@@ -14,6 +14,8 @@
         {
             Id = default;
             FullName = fullName;
+            Users = new List<User>();
+            CheckPoints = new List<CheckPoint>();
         }
     }
 }

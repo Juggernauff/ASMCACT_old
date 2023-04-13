@@ -1,4 +1,4 @@
-﻿namespace API.Models
+﻿namespace TelegramBot.Models
 {
     public class CheckPoint
     {
@@ -10,10 +10,12 @@
 
         public Company? Company { get; private set; }
 
-        public CheckPoint(string name, ulong companyId)
+        public CheckPoint(string name)
         {
+            Id = 1;
             Name = name;
-            CompanyId = companyId;
+            CompanyId = 1;
+            Company = default;
         }
     }
 }

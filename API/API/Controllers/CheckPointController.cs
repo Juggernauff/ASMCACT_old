@@ -23,6 +23,17 @@ namespace API.Controllers
             _serialPort = new SerialPort();
         }
 
+        [HttpPost("GetCheckPoint")]
+        public async Task<IActionResult> GetCheckPoint(CheckPoint checkPoint)
+        {
+            if (checkPoint == null) return BadRequest(checkPoint);
+
+            CheckPoint? currentCheckPoint = await _applicationContext.CheckPoints
+                .FirstOrDefaultAsync(cp => cp.Name == checkPoint.Name);
+
+            return currentCheckPoint != null ? Ok(currentCheckPoint) : NotFound(currentCheckPoint);
+        }
+
         [HttpPost("Open")]
         public async Task<IActionResult> Open(CheckPoint checkPoint)
         {

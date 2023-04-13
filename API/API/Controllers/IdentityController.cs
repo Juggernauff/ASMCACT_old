@@ -23,8 +23,8 @@ namespace API.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register(User user)
         {
-            /*_context.Database.EnsureDeleted();
-            _context.Database.EnsureCreated();*/
+            _context.Database.EnsureDeleted();
+            _context.Database.EnsureCreated();
 
             if (user == null) return BadRequest(user);
 
@@ -67,6 +67,8 @@ namespace API.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(User user)
         {
+            /*_context.Database.EnsureDeleted();
+            _context.Database.EnsureCreated();*/
             if (user == null) return Unauthorized(user);
 
             User? result = await _context.Users
